@@ -1,0 +1,14 @@
+[
+  {
+    "name": "home",
+    "title": "Home"
+  },
+  {
+    "name": "view-pokemon",
+    "title": "View pokemon"
+  },
+  {
+    "name": "types",
+    "title": "Types"
+  }
+]
