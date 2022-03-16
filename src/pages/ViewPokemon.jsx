@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import useFetch from "../hooks/useFetch";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import PokemonEvolutions from "./PokemonEvolutions";
 
 function ViewPokemon(props) {
     const pokemonName = useParams();
@@ -19,32 +20,48 @@ function ViewPokemon(props) {
     }, [pokemonName])
     if (pokemonDetails) {
 
-        // console.log('pokemon', pokemonDetails.sprites.versions.map(v => console.log(v));
+        console.log('pokemon id:::', pokemonDetails);
     }
     return (
         <>
             {loading && <span>{loading}</span>}
             {pokemonDetails &&
-                <div>
-                    <h1>{pokemonDetails.name}</h1>
-                    <img src={pokemonDetails && pokemonDetails.sprites.back_default} alt=""/>
-                    <div>
+                <div className="flex-col-center">
+                    <h1 className="uppercase my-2">{pokemonDetails.name}</h1>
+                    <div className="pokemon-card">
+                        <img src={pokemonDetails && pokemonDetails.sprites.front_default} alt=""/>
+                        <div>
+                            <p className='uppercase'>
+                                height: <span className="font-bold">{pokemonDetails.height}</span>
+                            </p>
+                            <p className='uppercase'>
+                                weight: <span className="font-bold">{pokemonDetails.weight}</span>
+                            </p>
+                            <ul className='uppercase'>
+                                <li>Abilities:</li>
+                                {pokemonDetails.abilities.map(({ability}) =>
+                                    <li key={ability.name} className="font-bold">{ability.name}</li>
+                                )}
+                            </ul>
+                        </div>
+
                         <ul>
-                            {pokemonDetails && pokemonDetails.types.map(type =>
-                                <li key={type.slot}>{type.type.name}</li>
+                            <span className="uppercase">types</span> :
+                            {pokemonDetails.types && pokemonDetails.types.map(({slot, type}) =>
+                                <li key={slot}>
+                                    <a className="font-bold" href='!#'>
+                                        {type.name}
+                                    </a>
+                                </li>
                             )}
                         </ul>
+                        <div>
+                            <img src={pokemonDetails.versions} alt=""/>
+                        </div>
+
+                        <PokemonEvolutions pokemonId={pokemonDetails.id}/>
                     </div>
-                    <p>
-                        height: {pokemonDetails.height}
-                    </p>
-                    <p>
-                        weight: {pokemonDetails.weight}
-                    </p>
-                    <div>
-                        <img src={pokemonDetails.versions} alt=""/>
-                    </div>
-                    {/*<p>types : {pokemonDetails && pokemonDetails.types.type}</p>*/}
+
                 </div>
             }
         </>

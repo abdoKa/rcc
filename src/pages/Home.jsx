@@ -21,12 +21,15 @@ const Home = () => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+
     return (
         <>
             <Navbar logoSrc={logo}
                     alt='pokemon logo'
             />
+
             {loading && <span>loading...</span>}
+
             {data &&
                 <>
                     <DisplayPokemon pokemons={data.results}/>
@@ -44,8 +47,8 @@ const Home = () => {
                     </div>
                 </>
             }
-            {error && <span>{error}</span>}
 
+            {error && <span>{error}</span>}
         </>
     );
 };
