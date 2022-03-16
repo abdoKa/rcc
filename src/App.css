@@ -35,6 +35,12 @@ body {
     gap: 2rem;
 }
 
+.block-center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
 @media (min-width: 768px) {
     .container {
         width: 750px;
@@ -63,7 +69,7 @@ body {
 /*Navbar*/
 .navbar {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 1rem 0;
 }
 
@@ -107,4 +113,10 @@ body {
 
 .poke__card:hover {
     border: 2px solid red;
+}
+
+/*Buttons*/
+.btn {
+    padding: .5rem .7rem;
+    margin: 0 .5rem;
 }
