@@ -1,7 +1,7 @@
 
 const NavItems = ({items}) => (
     <ul>
-        {items.map(({name,title}) =>
+        {items && items.map(({name,title}) =>
             <li key={name}>{title}</li>
         )}
     </ul>

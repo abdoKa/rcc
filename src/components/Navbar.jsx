@@ -1,5 +1,5 @@
 import React from 'react';
-import NavItems from "./lists/NavItems";
+import NavItems from "./NavItems";
 
 const Navbar = ({logoSrc, alt,navItems}) => {
     return (
