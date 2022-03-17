@@ -17,7 +17,10 @@ function useFetch(url) {
             .then(data => {
                 setData(data);
                 setLoading(null);
-            });
+            }).catch(err => {
+            setLoading(false)
+            setError('An error occurred.')
+        })
 
     }, [url])
 

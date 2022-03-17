@@ -8,6 +8,7 @@ import Pagination from "../components/Paginations";
 const Home = () => {
     const pokemonPerPage = 20;
     const [currentPage, setCurrentPage] = useState(1);
+    const totalPokemon = () => data ? data.count : 0;
 
     const offset = () => {
         return (currentPage - 1) * pokemonPerPage + 1
@@ -19,8 +20,18 @@ const Home = () => {
         loading
     } = useFetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset()}&limit=${pokemonPerPage}`);
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+    // const getPages = () => {
+    //     const totalPages = totalPokemon / pokemonPerPage;
+    //     console.log('oo', totalPages);
+    //     const pages = []
+    //     for (let i = 0; i < totalPages; i++) {
+    //         pages.push(i)
+    //     }
+    //
+    //     console.log('pages', pages);
+    //     return pages;
+    // }
 
     return (
         <>
@@ -33,16 +44,14 @@ const Home = () => {
             {data &&
                 <>
                     <DisplayPokemon pokemons={data.results}/>
-                    <Pagination itemsPerPage={pokemonPerPage} totalItems={data.length} paginate={paginate}/>
-                    <div className="block-center">
+                    <div className="block-center py-2">
                         <button className="btn" onClick={() => {
                             setCurrentPage(currentPage - 1)
-                        }}>prev
+                        }}>prev page
                         </button>
-
                         <button className='btn' onClick={() => {
                             setCurrentPage(currentPage + 1)
-                        }}>next
+                        }}>next page
                         </button>
                     </div>
                 </>

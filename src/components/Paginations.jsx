@@ -10,9 +10,9 @@ const Pagination = ({itemsPerPage, totalItems, paginate}) => {
     return (
         <nav>
             <ul className="mt-2 flex-center">
-                {pageNumber.map(n => (
-                    <li key={n}>
-                        <button onClick={() => paginate(n)}>{n}</button>
+                {pageNumber.map(number => (
+                    <li key={number}>
+                        <button onClick={() => paginate(number)}>{number}</button>
                     </li>
                 ))}
             </ul>
